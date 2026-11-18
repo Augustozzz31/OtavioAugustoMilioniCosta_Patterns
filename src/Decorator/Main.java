@@ -1,0 +1,14 @@
+package Decorator;
+
+public class Main {
+    static void main() {
+        Notifier n1 = new EmailNotifier();
+        n1.send("Olá");
+
+        Notifier n2 = new SlackDecorator(new EmailNotifier());
+        n2.send("Promoção");
+
+        Notifier n3 = new SlackDecorator(new SmsDecorator(new EmailNotifier()));
+        n3.send("Sistema fora");
+    }
+}
